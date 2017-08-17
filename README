@@ -1,0 +1,13 @@
+code files included and their usage:
+     count_tags.py: count tags
+     count_users.py: count unique users
+     audit.py: audit street name, update function included
+     audit_city.py: audit city name, update function included
+     audit_zip.py: audit postcode, update function included
+     audit_state.py: audit state name, update function included
+     audit_country.py: audit country name, update function included
+     data_edit.py: the file for cleaning the osm data and transform osm file into json file
+
+osm file included: 
+     boston_massachusetts_sample.osm
+

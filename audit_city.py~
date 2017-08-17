@@ -1,0 +1,26 @@
+filename = "boston_massachusetts.osm"
+import xml.etree.cElementTree as ET
+from collections import defaultdict
+def print_sorted_dict(d):
+    keys = d.keys()
+    keys = sorted(keys, key=lambda s: s.lower())
+    for k in keys:
+        v = d[k]
+        print "%s: %d" % (k, v) 
+
+cities = defaultdict(int)
+def audit_city(cities, city):
+    cities[city] += 1
+
+def is_city_name(elem):
+    return (elem.tag == "tag") and (elem.attrib['k'] == "addr:city")
+
+def audit():
+    for event, elem in ET.iterparse(filename):
+        if is_city_name(elem):
+            audit_city(cities, elem.attrib['v'])    
+    #print_sorted_dict(cities) 
+    return cities
+
+if __name__ == '__main__':
+    audit()
